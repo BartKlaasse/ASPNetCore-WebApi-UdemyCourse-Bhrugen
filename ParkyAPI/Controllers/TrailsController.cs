@@ -69,7 +69,7 @@ namespace ParkyAPI.Controllers
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult CreateTrail([FromBody] TrailDTO trailDto)
+        public IActionResult CreateTrail([FromBody] TrailUpsertDTO trailDto)
         {
             if (trailDto == null)
             {
@@ -96,7 +96,7 @@ namespace ParkyAPI.Controllers
         //FLOW: Specify statuscode
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         [ProducesResponseType(StatusCodes.Status500InternalServerError)]
-        public IActionResult UpdateTrail(int trailId, [FromBody] TrailDTO trailDto)
+        public IActionResult UpdateTrail(int trailId, [FromBody] TrailUpsertDTO trailDto)
         {
             //FLOW: TrailId (string input) should be the same as the id inside the dto
             if (trailDto == null || trailId != trailDto.Id)
