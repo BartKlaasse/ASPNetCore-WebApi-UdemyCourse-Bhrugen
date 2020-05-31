@@ -84,10 +84,28 @@ namespace ParkyAPI.Controllers
             var nationalParkObj = _mapper.Map<NationalPark>(nationalParkDto);
             if (!_npRepo.Update(nationalParkObj))
             {
-                ModelState.AddModelError("", $"Something went wrong when saving the record {nationalParkObj.Name}");
+                ModelState.AddModelError("", $"Something went wrong when patching the record {nationalParkObj.Name}");
                 return StatusCode(500, ModelState);
             }
             //FLOW: Not returning any content after httppatch
+            return NoContent();
+        }
+
+        [HttpDelete("{nationalParkId:int}", Name = "DeleteNationalPark")]
+        public IActionResult DeleteNationalPark(int nationalParkId)
+        {
+            //FLOW: if park does not exist return notfound(404)
+            if (!_npRepo.NationalParkExists(nationalParkId))
+            {
+                return NotFound();
+            }
+            var nationalParkObj = _npRepo.GetNationalPark(nationalParkId);
+            if (!_npRepo.Delete(nationalParkObj))
+            {
+                ModelState.AddModelError("", $"Something went wrong when deleting the record {nationalParkObj.Name}");
+                return StatusCode(500, ModelState);
+            }
+            //FLOW: Not returning any content after httpdelete
             return NoContent();
         }
     }
