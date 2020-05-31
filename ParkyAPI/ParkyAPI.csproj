@@ -5,7 +5,8 @@
     <!-- https://stackoverflow.com/questions/40836489/visual-studio-code-net-core-generate-xml-documentation -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
     <DocumentationFile>ParkyApi.xml</DocumentationFile>
-    <!-- <NoWarn>1701;1702;1705;1591</NoWarn> -->
+    <!-- Disabling openapi warnings because of lacking api info. I could also disable on individual level but i dont feel like doing that at the moment.-->
+    <NoWarn>1701;1702;1705;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
