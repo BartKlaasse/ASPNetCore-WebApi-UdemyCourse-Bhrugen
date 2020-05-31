@@ -123,11 +123,19 @@ namespace ParkyAPI
 
             app.UseHttpsRedirection();
             app.UseSwagger();
+            // app.UseSwaggerUI(options =>
+            // {
+            //     // options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecNP/swagger.json", "Parky Api National Parks");
+            //     // options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecTrails/swagger.json", "Parky Api Trails");
+            //     options.SwaggerEndpoint("/swagger/ParkyOpenApiSpec/swagger.json", "Parky Api");
+            //     options.RoutePrefix = "";
+            // });
             app.UseSwaggerUI(options =>
             {
-                // options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecNP/swagger.json", "Parky Api National Parks");
-                // options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecTrails/swagger.json", "Parky Api Trails");
-                options.SwaggerEndpoint("/swagger/ParkyOpenApiSpec/swagger.json", "Parky Api");
+                foreach (var desc in provider.ApiVersionDescriptions)
+                {
+                    options.SwaggerEndpoint($"/swagger/{desc.GroupName}/swagger.json", desc.GroupName.ToUpperInvariant());
+                }
                 options.RoutePrefix = "";
             });
             app.UseRouting();

@@ -12,7 +12,9 @@ using ParkyAPI.Repository.IRepository;
 
 namespace ParkyAPI.Controllers
 {
-    [Route("api/[controller]")]
+    // [Route("api/[controller]")]
+    [Route("api/v{version:apiVersion}/trails")]
+
     [ApiController]
     // [ApiExplorerSettings(GroupName = "ParkyOpenApiSpecTrails")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
