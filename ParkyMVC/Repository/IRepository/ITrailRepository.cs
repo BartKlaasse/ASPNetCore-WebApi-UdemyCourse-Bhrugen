@@ -6,7 +6,7 @@ using ParkyMVC.Models;
 
 namespace ParkyMVC.Repository.IRepository
 {
-    interface ITrailRepository : IRepository<Trail>
+    public interface ITrailRepository : IRepository<Trail>
     {
 
     }

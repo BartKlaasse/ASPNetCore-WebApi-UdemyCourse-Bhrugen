@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace ParkyMVC.Repository.IRepository
 {
     //FLOW: Making a generic Interface repository so we can use that for the trails and national parks repository
-    interface IRepository<T> where T : class
+    public interface IRepository<T> where T : class
     {
         Task<T> GetAsync(string url, int Id);
         Task<IEnumerable<T>> GetAllAsync(string url);

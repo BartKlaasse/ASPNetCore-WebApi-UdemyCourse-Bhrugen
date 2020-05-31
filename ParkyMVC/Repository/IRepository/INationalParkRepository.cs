@@ -6,7 +6,7 @@ using ParkyMVC.Models;
 
 namespace ParkyMVC.Repository.IRepository
 {
-    interface INationalParkRepository : IRepository<NationalPark>
+    public interface INationalParkRepository : IRepository<NationalPark>
     {
 
     }
