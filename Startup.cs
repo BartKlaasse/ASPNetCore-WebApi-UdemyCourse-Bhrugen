@@ -56,6 +56,11 @@ namespace ParkyAPI
 
             app.UseHttpsRedirection();
             app.UseSwagger();
+            app.UseSwaggerUI(options =>
+            {
+                options.SwaggerEndpoint("/swagger/ParkyOpenApiSpec/swagger.json", "Parky Api");
+                options.RoutePrefix = "";
+            });
             app.UseRouting();
 
             app.UseAuthorization();
