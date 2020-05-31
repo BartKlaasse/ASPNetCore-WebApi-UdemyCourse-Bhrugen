@@ -42,7 +42,19 @@ namespace ParkyAPI
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
                         Title = "ParkyApi",
-                            Version = "1"
+                            Version = "1",
+                            Description = "Udemy Parky Api course by bhrugen patel",
+                            Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                            {
+                                Email = "name@example.com",
+                                    Name = "Bart Klaasse",
+                                    Url = new Uri("Https://google.com")
+                            },
+                            License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                            {
+                                Name = "Custom license",
+                                    Url = new Uri("https://google.com")
+                            }
                     });
                 //FLOW: Get the xml file from the root folder of the project.
                 var xmlCommentsFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
