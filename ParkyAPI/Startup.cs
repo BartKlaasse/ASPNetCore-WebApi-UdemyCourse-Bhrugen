@@ -37,32 +37,56 @@ namespace ParkyAPI
             services.AddScoped<INationalParkRepository, NationalParkRepository>();
             services.AddScoped<ITrailRepository, TrailRepository>();
             services.AddAutoMapper(typeof(ParkyMappings));
+            services.AddApiVersioning(options =>
+            {
+                options.AssumeDefaultVersionWhenUnspecified = true;
+                options.DefaultApiVersion = new ApiVersion(1, 0);
+                options.ReportApiVersions = true;
+            });
             services.AddSwaggerGen(options =>
             {
-                options.SwaggerDoc("ParkyOpenApiSpecNP",
+                // options.SwaggerDoc("ParkyOpenApiSpecNP",
+                //     new Microsoft.OpenApi.Models.OpenApiInfo()
+                //     {
+                //         Title = "ParkyApi NationalParks",
+                //             Version = "1",
+                //             Description = "Udemy Parky Api for national parkscourse by bhrugen patel",
+                //             Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                //             {
+                //                 Email = "name@example.com",
+                //                     Name = "Bart Klaasse",
+                //                     Url = new Uri("Https://google.com")
+                //             },
+                //             License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                //             {
+                //                 Name = "Custom license",
+                //                     Url = new Uri("https://google.com")
+                //             }
+                //     });
+                // options.SwaggerDoc("ParkyOpenApiSpecTrails",
+                //     new Microsoft.OpenApi.Models.OpenApiInfo()
+                //     {
+                //         Title = "ParkyApi Trails",
+                //             Version = "1",
+                //             Description = "Udemy Parky Api for trails course by bhrugen patel",
+                //             Contact = new Microsoft.OpenApi.Models.OpenApiContact()
+                //             {
+                //                 Email = "name@example.com",
+                //                     Name = "Bart Klaasse",
+                //                     Url = new Uri("Https://google.com")
+                //             },
+                //             License = new Microsoft.OpenApi.Models.OpenApiLicense()
+                //             {
+                //                 Name = "Custom license",
+                //                     Url = new Uri("https://google.com")
+                //             }
+                //     });                
+                options.SwaggerDoc("ParkyOpenApiSpec",
                     new Microsoft.OpenApi.Models.OpenApiInfo()
                     {
-                        Title = "ParkyApi NationalParks",
+                        Title = "ParkyApi",
                             Version = "1",
-                            Description = "Udemy Parky Api for national parkscourse by bhrugen patel",
-                            Contact = new Microsoft.OpenApi.Models.OpenApiContact()
-                            {
-                                Email = "name@example.com",
-                                    Name = "Bart Klaasse",
-                                    Url = new Uri("Https://google.com")
-                            },
-                            License = new Microsoft.OpenApi.Models.OpenApiLicense()
-                            {
-                                Name = "Custom license",
-                                    Url = new Uri("https://google.com")
-                            }
-                    });
-                options.SwaggerDoc("ParkyOpenApiSpecTrails",
-                    new Microsoft.OpenApi.Models.OpenApiInfo()
-                    {
-                        Title = "ParkyApi Trails",
-                            Version = "1",
-                            Description = "Udemy Parky Api for trails course by bhrugen patel",
+                            Description = "Udemy Parky Api for course by bhrugen patel",
                             Contact = new Microsoft.OpenApi.Models.OpenApiContact()
                             {
                                 Email = "name@example.com",
@@ -95,8 +119,9 @@ namespace ParkyAPI
             app.UseSwagger();
             app.UseSwaggerUI(options =>
             {
-                options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecNP/swagger.json", "Parky Api National Parks");
-                options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecTrails/swagger.json", "Parky Api Trails");
+                // options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecNP/swagger.json", "Parky Api National Parks");
+                // options.SwaggerEndpoint("/swagger/ParkyOpenApiSpecTrails/swagger.json", "Parky Api Trails");
+                options.SwaggerEndpoint("/swagger/ParkyOpenApiSpec/swagger.json", "Parky Api");
                 options.RoutePrefix = "";
             });
             app.UseRouting();
