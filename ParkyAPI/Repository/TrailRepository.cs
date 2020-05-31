@@ -65,5 +65,6 @@ namespace ParkyAPI.Repository
         {
             return _db.Trails.Include(c => c.NationalPark).Where(c => c.NationalParkId == npId).ToList();
         }
+
     }
 }
