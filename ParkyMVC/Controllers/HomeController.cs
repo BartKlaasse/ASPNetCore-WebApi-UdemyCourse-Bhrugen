@@ -67,7 +67,7 @@ namespace ParkyMVC.Controllers
             }
 
             HttpContext.Session.SetString("JWToken", objUser.Token);
-            return RedirectToAction("~/Home/Index");
+            return RedirectToAction("Index");
         }
 
         [HttpGet]
@@ -85,13 +85,13 @@ namespace ParkyMVC.Controllers
             {
                 return View();
             }
-            return RedirectToAction("~/Home/Login");
+            return RedirectToAction("Login");
         }
 
-        public async Task<IActionResult> LogOutAsync()
+        public IActionResult Logout()
         {
             HttpContext.Session.SetString("JWToken", "");
-            return RedirectToAction("~/Home/Login");
+            return RedirectToAction("Login");
         }
     }
 }
