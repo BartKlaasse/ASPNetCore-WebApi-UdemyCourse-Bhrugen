@@ -35,7 +35,8 @@ namespace ParkyMVC.Controllers
                 {
                 Text = i.Name,
                 Value = i.Id.ToString()
-                })
+                }),
+                Trail = new Trail()
             };
             if (id == null)
             {
