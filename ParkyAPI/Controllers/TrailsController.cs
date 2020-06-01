@@ -18,7 +18,9 @@ namespace ParkyAPI.Controllers
     [ApiController]
     // [ApiExplorerSettings(GroupName = "ParkyOpenApiSpecTrails")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public class TrailsController : Controller
+    //FLOW: Api controllers kunnen beter overerven van ControllerBase ipv Controller, aangezien een apicontroller niet alle mvc controller functionaliteiten nodig heeft
+
+    public class TrailsController : ControllerBase
     {
         private ITrailRepository _trailRepo;
         private readonly IMapper _mapper;

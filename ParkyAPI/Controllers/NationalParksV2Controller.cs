@@ -18,7 +18,8 @@ namespace ParkyAPI.Controllers
     [ApiController]
     // [ApiExplorerSettings(GroupName = "ParkyOpenApiSpecNP")]
     [ProducesResponseType(StatusCodes.Status400BadRequest)]
-    public class NationalParksV2Controller : Controller
+    //FLOW: Api controllers kunnen beter overerven van ControllerBase ipv Controller, aangezien een apicontroller niet alle mvc controller functionaliteiten nodig heeft
+    public class NationalParksV2Controller : ControllerBase
     {
         private INationalParkRepository _npRepo;
         private readonly IMapper _mapper;
