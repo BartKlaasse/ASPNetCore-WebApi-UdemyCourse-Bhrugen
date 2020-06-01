@@ -52,12 +52,28 @@ namespace ParkyAPI.Repository
 
         public bool IsUniqueUser(string username)
         {
-            throw new NotImplementedException();
+            var user = _db.Users.SingleOrDefault(x => x.Username == username);
+            if (user == null)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
         }
 
         public User Register(string username, string password)
         {
-            throw new NotImplementedException();
+            User userObj = new User()
+            {
+                Username = username,
+                Password = password
+            };
+            _db.Users.Add(userObj);
+            _db.SaveChanges();
+            userObj.Password = "";
+            return userObj;
         }
     }
 }
