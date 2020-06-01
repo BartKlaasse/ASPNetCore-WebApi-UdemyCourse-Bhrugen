@@ -24,7 +24,7 @@ namespace ParkyMVC.Controllers
         }
         public IActionResult Index()
         {
-            return View(new NationalPark() { });
+            return View(new Trail() { });
         }
         public async Task<IActionResult> Upsert(int? id)
         {
