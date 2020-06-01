@@ -36,6 +36,7 @@ namespace ParkyMVC.Controllers
                 Text = i.Name,
                 Value = i.Id.ToString()
                 }),
+                //FLOW: We have to initialize trail() to prevent errors
                 Trail = new Trail()
             };
             if (id == null)
@@ -75,7 +76,18 @@ namespace ParkyMVC.Controllers
             }
             else
             {
-                return View(obj);
+                IEnumerable<NationalPark> npList = await _npRepo.GetAllAsync(Static.NationalParkAPIPath);
+                TrailsViewModel objVM = new TrailsViewModel()
+                {
+                    NationalParkList = npList.Select(i => new SelectListItem
+                    {
+                    Text = i.Name,
+                    Value = i.Id.ToString()
+                    }),
+                    //FLOW: We have to initialize trail() to prevent errors
+                    Trail = obj.Trail
+                };
+                return View(objVM);
             }
         }
 
