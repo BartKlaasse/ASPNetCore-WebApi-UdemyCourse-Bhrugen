@@ -40,7 +40,7 @@ namespace ParkyMVC.Controllers
             if (id == null)
             {
                 //FLOW: True for create
-                return View(obj);
+                return View(objVM);
             }
 
             //FLOW: Update method from here
