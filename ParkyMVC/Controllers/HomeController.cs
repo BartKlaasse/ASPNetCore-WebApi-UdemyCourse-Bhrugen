@@ -32,8 +32,8 @@ namespace ParkyMVC.Controllers
         {
             IndexViewModel listOfParksAndTrails = new IndexViewModel()
             {
-                NationalParkList = await _npRepo.GetAllAsync(Static.NationalParkAPIPath),
-                TrailList = await _trailRepo.GetAllAsync(Static.TrailAPIPath),
+                NationalParkList = await _npRepo.GetAllAsync(Static.NationalParkAPIPath, HttpContext.Session.GetString("JWToken")),
+                TrailList = await _trailRepo.GetAllAsync(Static.TrailAPIPath, HttpContext.Session.GetString("JWToken")),
             };
             return View(listOfParksAndTrails);
         }
