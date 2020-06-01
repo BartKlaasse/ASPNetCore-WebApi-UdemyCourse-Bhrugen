@@ -50,6 +50,8 @@ namespace ParkyAPI
             services.AddVersionedApiExplorer(options => options.GroupNameFormat = "'v'VVV");
             services.AddTransient<IConfigureOptions<SwaggerGenOptions>, ConfigureSwaggerOptions>();
             services.AddSwaggerGen();
+            var appSettings = Configuration.GetSection("AppSettings");
+            services.Configure<AppSettings>(appSettings);
             // services.AddSwaggerGen(options =>
             // {
             //     // options.SwaggerDoc("ParkyOpenApiSpecNP",
