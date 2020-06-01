@@ -20,6 +20,7 @@ namespace ParkyAPI.Controllers
             _userRepo = userRepo;
         }
 
+        [AllowAnonymous]
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] User model)
         {
