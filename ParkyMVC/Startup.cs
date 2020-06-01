@@ -29,6 +29,12 @@ namespace ParkyMVC
             services.AddScoped<ITrailRepository, TrailRepository>();
             services.AddControllersWithViews().AddRazorRuntimeCompilation();
             services.AddHttpClient();
+            services.AddSession(options =>
+            {
+                options.IdleTimeout = TimeSpan.FromMinutes(15);
+                options.Cookie.HttpOnly = true;
+                options.Cookie.IsEssential = true;
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -46,7 +52,11 @@ namespace ParkyMVC
             }
             app.UseHttpsRedirection();
             app.UseStaticFiles();
-
+            app.UseSession();
+            app.UseCors(x => x
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader());
             app.UseRouting();
 
             app.UseAuthorization();
