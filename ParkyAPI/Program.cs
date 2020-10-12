@@ -23,9 +23,7 @@ namespace ParkyAPI
             {
                 webBuilder.ConfigureKestrel(serverOptions =>
                     {
-
                         serverOptions.Listen(IPAddress.Loopback, 5300);
-
                     })
                     .UseStartup<Startup>();
             });
